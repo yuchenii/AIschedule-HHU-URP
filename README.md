@@ -2,7 +2,7 @@
 
 小爱课程表河海大学教务系统适配
 
-[![](https://img.shields.io/badge/%E5%BC%80%E5%8F%91%E8%80%85-yuchen-brightgreen)](https://www.yuchen.tech)
+[![](https://img.shields.io/badge/%E5%BC%80%E5%8F%91%E8%80%85-yuchen-brightgreen)](https://blog.yuchen.tech)
 ![](https://img.shields.io/badge/dynamic/json?color=blue&label=%E4%BD%BF%E7%94%A8%E4%BA%BA%E6%95%B0&query=usedNum&url=https%3A%2F%2Fopen-schedule.ai.xiaomi.com%2Fapi%2Fcoder%3Ftb_id%3D33207)
 
 ## 使用方法
