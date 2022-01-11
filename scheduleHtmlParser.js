@@ -95,18 +95,19 @@ function parseHtml(html) {
                     // 课程名
                     result.name = td_context.eq(0).text();
                     // 名字太长，简写
-                    if (result.name.search("毛泽东思想和中国特色社会主义理论体系概论") != -1)
-                        result.name = result.name.replace("毛泽东思想和中国特色社会主义理论体系概论", "毛概")
-                    // 老师
-                    result.teacher = td_context.eq(1).text();
+                    if (result.name.search("毛泽东思想和中国特色社会主义理论体系概论") != -1) {
+                        result.name = result.name.replace("毛泽东思想和中国特色社会主义理论体系概论", "毛概");
+                    }
+                    // 老师,跳过课程号
+                    result.teacher = td_context.eq(2).text();
                     // 周次
-                    let str_weeks = td_context.eq(2).text();
+                    let str_weeks = td_context.eq(3).text();
                     result.weeks = getWeeks(str_weeks);
                     // 节次
-                    let str_sections = td_context.eq(3).text();
+                    let str_sections = td_context.eq(4).text();
                     result.sections = getSections(str_sections);
                     // 教室
-                    result.position = td_context.eq(4).text();
+                    result.position = td_context.eq(5).text();
                     // 星期
                     result.day = j + 1;
                     courseInfos.push(result);
@@ -115,10 +116,11 @@ function parseHtml(html) {
         })
     })
 
-    return {
-        sectionTimes: sectionTimes,
-        courseInfos: courseInfos
-    }
+    // return {
+    //     sectionTimes: sectionTimes,
+    //     courseInfos: courseInfos
+    // }
+    return courseInfos;
 }
 
 function scheduleHtmlParser(html) {
