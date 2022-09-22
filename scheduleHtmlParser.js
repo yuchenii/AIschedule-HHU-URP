@@ -16,8 +16,12 @@ function getSectionTimes(str_sectionTimes, index) {
 // 1-9,11-18周
 // 1-5,7,10,13-18周 可能会有
 // 1-8周单/双 其他学校有这样的
+// // 1-9,11-18周上  包含一些无用的中文字符
 function getWeeks(str_weeks) {
     let weeks = [];
+    
+    str_weeks = str_weeks.replace(/[ ]/g, ""); // 去除所有空格
+    str_weeks = str_weeks.replace("，",",");   // 替换为英文逗号
 
     // 逗号分隔遍历周次
     str_weeks.split(',').forEach(function (item) {
@@ -32,6 +36,7 @@ function getWeeks(str_weeks) {
         }
 
         item = item.replace("周", "");
+        item = item.replace(/[\u4e00-\u9fa5]/g,'');  // 删除其它没用的中文字符
 
         let startWeek = 1;
         let endWeek = 0;
@@ -116,11 +121,10 @@ function parseHtml(html) {
         })
     })
 
-    // return {
-    //     sectionTimes: sectionTimes,
-    //     courseInfos: courseInfos
-    // }
-    return courseInfos;
+    return {
+        sectionTimes: sectionTimes,
+        courseInfos: courseInfos
+    }
 }
 
 function scheduleHtmlParser(html) {
